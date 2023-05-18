@@ -1,0 +1,78 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
+
+:root {
+  --mainColor: #a435f0;
+  --main-color: #a435f0;
+  --text-color-1: #444;
+  --text-color-2: #666;
+  --bg-color-1: #fff;
+  --bg-color-2: #eee;
+  --box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+body {
+  background: var(--bg-color-1);
+  font-family: "Open Sans", sans-serif;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.container-fluid {
+  margin-top: 72px;
+}
+
+.background-MainColor {
+  background-color: var(--mainColor);
+  color: var(--bg-color-1);
+  border: var(--bg-color-1) solid 1px;
+}
+.background-MainColor:hover {
+  background-color: var(--mainColor);
+  color: var(--bg-color-1);
+  border: var(--bg-color-1) solid 1px;
+}
+
+.my-btn {
+  border: 1px solid rgba(0, 0, 0, 0.19);
+  color: #fff;
+  cursor: pointer;
+  min-width: 8rem;
+  padding: 10px 0;
+}
+
+.btn-addToCart {
+  background-color: #a435f0;
+}
+
+.btn-goToCourse {
+  background-color: #111;
+}
+
+.btn-goToCart {
+  background-color: #362541;
+}
+
+.link {
+  color: var(--mainColor);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.fa-spinner {
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,28 @@
+.course-title {
+  line-height: 1.2;
+  letter-spacing: -0.02rem;
+  font-size: 1.1rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 66px;
+}
+
+.course-price {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.card {
+  border: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.course {
+  height: 550px;
+}

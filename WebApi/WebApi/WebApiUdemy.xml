@@ -1,0 +1,362 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebApi</name>
+    </assembly>
+    <members>
+        <member name="M:WebApi.Controllers.AccountController.AuthenticateAsync(Models.Dtos.Account.AuthenticationRequest)">
+            <summary>
+            Authenticates a user.
+            </summary>
+            <param name="request">The authentication request object containing the user's email and password.</param>
+            <returns>A BaseResponse object containing the authentication token and other relevant data.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.AccountController.RegisterAsync(Models.Dtos.Account.RegisterRequest)">
+            <summary>
+            Registers a new user with the provided information
+            </summary>
+            <param name="request">The registration request data</param>
+            <returns>A response indicating success (sends a confirmation email) or failure of the registration process</returns>
+        </member>
+        <member name="M:WebApi.Controllers.AccountController.ConfirmEmailAsync(System.String,System.String)">
+            <summary>
+            Endpoint for confirming user's email address
+            </summary>
+            <param name="userId">The user's Id</param>
+            <param name="code">The confirmation code</param>
+        </member>
+        <member name="M:WebApi.Controllers.AccountController.ForgotPasswordAsync(Models.Dtos.Account.ForgotPasswordRequest)">
+            <summary>
+            API endpoint to handle user forgot password requests
+            </summary>
+            <param name="request">The forgot password request object</param>
+            <returns>Returns a HTTP response with BaseResponse &lt;string &gt;</returns>
+        </member>
+        <member name="M:WebApi.Controllers.AccountController.ResetPasswordAsync(Models.Dtos.Account.ResetPasswordRequest)">
+            <summary>
+            Handles a HTTP POST request to reset a user's password.
+            </summary>
+            <param name="resetPasswordRequest">The request containing information about the user whose password needs to be reset.</param>
+            <returns>An HTTP 200 (OK) response with the result of the password reset operation.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.AccountController.Update(Models.Dtos.UserForUpdateDto)">
+            <summary>
+            Handles a HTTP PUT request to update a user's information.
+            </summary>
+            <param name="userForUpdateDto">The request containing the updated information for the user.</param>
+            <returns>An HTTP 200 (OK) response with the result of the update operation.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.AccountController.GetUserInfo">
+            <summary>
+            Handles a HTTP GET request to retrieve a user's information.
+            </summary>
+            <returns>An HTTP 200 (OK) response with the user's information.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.CartsController.GetCartItems">
+            <summary>
+            Gets the cart items for the authenticated user.
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.CartsController.GetCartItem(System.Int32)">
+            <summary>
+            Gets a cart item for the authenticated user by id.
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.CartsController.AddToCart(System.Int32)">
+            <summary>
+            Adds an item to the cart for the authenticated user.
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.CartsController.RemoveFromCart(System.Int32)">
+            <summary>
+            Removes an item from the cart for the authenticated user.
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.CartsController.DeleteCartItemsForUser">
+            <summary>
+            Deletes all cart items for the authenticated user.
+            </summary>
+            <returns>A response with a 204 No Content status code.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.CartsController.GetCountItem">
+            <summary>
+            Gets the count of items in the user's cart.
+            </summary>
+            <returns>An OkObjectResult containing the count of items in the user's cart.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.CategoriesController.GetCategories(System.Int32)">
+            <summary>
+            Gets all categories that have at least the specified number of courses.
+            </summary>
+            <param name="minCourseCount">The minimum number of courses that a category must have to be included in the results. Default is 1</param>
+        </member>
+        <member name="M:WebApi.Controllers.CategoriesController.GetCategory(System.Int32)">
+            <summary>
+            Gets a single category using the category ID.
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.CategoriesController.Create(Models.Dtos.CategoryForEditDto)">
+            <summary>
+            Creates a new category using the given CategoryForEditDto.
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.CategoriesController.Update(Models.Dtos.CategoryForEditDto,System.Int32)">
+            <summary>
+            Updates an existing category using the given CategoryForEditDto and category ID.
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.CategoriesController.Delete(System.Int32)">
+            <summary>
+            Deletes an existing category using the category ID.
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.CoursesController.GetCourse(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.Nullable{System.Double},System.Double,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Gets courses
+            </summary>
+            <param name="pageNumber">The page number of the results</param>
+            <param name="pageSize">The number of results per page</param>
+            <param name="instructorId">Optional instructor ID to filter by</param>
+            <param name="categoryId">Optional category ID to filter by</param>
+            <param name="languageId">Optional language ID to filter by</param>
+            <param name="levelId">Optional level ID to filter by</param>
+            <param name="name">Optional course name to filter by</param>
+            <param name="maxPrice">Optional maximum price to filter by</param>
+            <param name="minPrice">Optional minimum price to filter by</param>
+            <param name="onlyUserCourses">Whether to return only the courses belonging to the user</param>
+            <returns>A list of courses with their status for the user</returns>
+        </member>
+        <member name="M:WebApi.Controllers.CoursesController.GetUserCourses">
+            <summary>
+            Gets the courses associated with the current user
+            </summary>
+            <returns>A list of courses associated with the current user</returns>
+        </member>
+        <member name="M:WebApi.Controllers.CoursesController.GetInstructorCourses(System.Int32,System.Int32)">
+            <summary>
+            Gets the courses associated with the current instructor
+            </summary>
+            <returns>A list of courses associated with the current instructor</returns>
+        </member>
+        <member name="M:WebApi.Controllers.CoursesController.GetCourseForUpdate(System.Int32)">
+            <summary>
+            Gets a course associated with the current user for updating
+            </summary>
+            <param name="courseId">The ID of the course to retrieve</param>
+            <returns>The course associated with the current user in a format suitable for updating</returns>
+        </member>
+        <member name="M:WebApi.Controllers.CoursesController.GetCourse(System.Int32)">
+            <summary>
+            Retrieves a course by its ID.
+            </summary>
+            <param name="courseId">The ID of the course to retrieve.</param>
+            <returns>The course with the specified ID.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.CoursesController.CreateCourse(Models.Dtos.CourseForCreateDto)">
+            <summary>
+            Creates a new course.
+            </summary>
+            <param name="dto">The DTO containing the course information.</param>
+            <returns>The newly created course.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.CoursesController.Update(Models.Dtos.CourseForUpdateDto,System.Int32)">
+            <summary>
+            Updates a course with the specified ID for the current authenticated user.
+            </summary>
+            <param name="dto">The DTO object containing the updated course data.</param>
+            <param name="courseId">The ID of the course to update.</param>
+            <returns>Returns an IActionResult indicating the success or failure of the operation.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.CoursesController.Delete(System.Int32)">
+            <summary>
+            Delete a specific course from the database and storage using its ID.
+            </summary>
+            <param name="courseId">The ID of the course to be deleted.</param>
+            <returns>If the deletion is successful,NoContent is returned.       
+            If the course is not found, NotFound is returned. 
+            If the user is not authorized, Unauthorized is returned,   
+            If the course is associated with one or more users, BadRequest is returned with a message indicating.
+            Unable to delete the course as it has been purchased by one or more users. Only those who have purchased the course can access it. </returns>
+        </member>
+        <member name="M:WebApi.Controllers.FilesController.UploadImage(Microsoft.AspNetCore.Http.IFormFile,System.String)">
+            <summary>
+            Uploads an image file.
+            </summary>
+            <param name="file">The image file to upload.</param>
+            <param name="directory">The image directory to upload.</param>
+            <returns>A response indicating whether the upload was successful and the name of the image.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.FilesController.GetImage(System.String)">
+            <summary>
+            Retrieves an image file by its name.
+            </summary>
+            <param name="imageName">The name of the image file to retrieve.</param>
+        </member>
+        <member name="M:WebApi.Controllers.FilesController.UploadVideo(Microsoft.AspNetCore.Http.IFormFile,System.String)">
+            <summary>
+            API endpoint to upload a video file.
+            </summary>
+            <param name="file">The video file to upload.</param>
+            <param name="directory">The video directory to upload.</param>
+            <returns>A response indicating whether the upload was successful and the name of the video.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.FilesController.GetVideo(System.String)">
+            <summary>
+            Retrieves a video file by name, provided that the user is authorized to view it.
+            </summary>
+            <remarks>
+            This endpoint requires the user to be authenticated and authorized to view the requested video. 
+            If the user is not authorized, the endpoint returns an Unauthorized status code (401).
+            If the requested video does not exist, the endpoint returns a NotFound status code (404).
+            </remarks>
+            <param name="videoName">The name of the video file to retrieve.</param>
+            <returns>The requested video file.</returns>
+        </member>
+        <member name="T:WebApi.Controllers.LanguagesController">
+            <summary>
+            API controller for managing languages.
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.LanguagesController.GetLanguages">
+            <summary>
+            Retrieves a list of all languages.
+            </summary>
+            <returns>A list of language DTOs.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.LanguagesController.GetLanguage(System.Int32)">
+            <summary>
+            Retrieves a language by ID.
+            </summary>
+            <param name="languageId">The ID of the language to retrieve.</param>
+            <returns>The language DTO.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.LanguagesController.Create(Models.Dtos.LanguageForEditDto)">
+            <summary>
+            Creates a new language.
+            </summary>
+            <param name="dto">The language DTO.</param>
+            <returns>The created language DTO.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.LanguagesController.Update(Models.Dtos.LanguageForEditDto,System.Int32)">
+            <summary>
+            Updates a language by ID.
+            </summary>
+            <param name="dto">The language DTO.</param>
+            <param name="languageId">The ID of the language to update.</param>
+            <returns>No content.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.LanguagesController.Delete(System.Int32)">
+            <summary>
+            Deletes a language by ID.
+            </summary>
+            <param name="languageId">The ID of the language to delete.</param>
+            <returns>No content.</returns>
+        </member>
+        <member name="T:WebApi.Controllers.LevelsController">
+            <summary>
+            API controller for managing levels.
+            </summary>
+        </member>
+        <member name="M:WebApi.Controllers.LevelsController.GetLevels">
+            <summary>
+            Retrieves a list of all levels.
+            </summary>
+            <returns>A list of level DTOs.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.LevelsController.GetLevel(System.Int32)">
+            <summary>
+            Retrieves a level by ID.
+            </summary>
+            <param name="levelId">The ID of the level to retrieve.</param>
+            <returns>The level DTO.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.LevelsController.Create(Models.Dtos.LevelForEditDto)">
+            <summary>
+            Creates a new level.
+            </summary>
+            <param name="dto">The level DTO.</param>
+            <returns>The created level DTO.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.LevelsController.Update(Models.Dtos.LevelForEditDto,System.Int32)">
+            <summary>
+            Updates a level by ID.
+            </summary>
+            <param name="dto">The level DTO.</param>
+            <param name="levelId">The ID of the level to update.</param>
+            <returns>An ActionResult.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.LevelsController.Delete(System.Int32)">
+            <summary>
+            Deletes a level by ID.
+            </summary>
+            <param name="levelId">The ID of the level to delete.</param>
+            <returns>An ActionResult.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.VideosController.GetVideos(System.Int32)">
+            <summary>
+            Retrieves all videos for a given course and returns them as a list of VideoDto objects.
+            </summary>
+            <param name="courseId">The ID of the course for which to retrieve the videos.</param>
+            <returns>An action result containing a list of VideoDto objects for the given course.
+            A VideoDto object represents a video and has the following properties:
+            - VideoId: An integer that represents the unique identifier of the video.
+            - VideoTitle: A string that represents the title of the video.
+            - VideoUrl: A string that represents the URL of the video.
+            </returns>
+        </member>
+        <member name="M:WebApi.Controllers.VideosController.GetInfoVideos(System.Int32)">
+            <summary>
+            Retrieves information for all videos for a given course and returns them as a list of VideoInfoDto objects.
+            </summary>
+            <param name="courseId">The ID of the course for which to retrieve video information.</param>
+            <returns>An action result containing a list of VideoInfoDto (only the video ID and title properties) objects for the given course.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.VideosController.GetVideoForUpdate(System.Int32,System.Int32)">
+            <summary>
+            Get the video for update by ID and course ID.
+            </summary>
+            <param name="courseId">The ID of the course.</param>
+            <param name="videoId">The ID of the video.</param>
+            <returns>The video for update.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.VideosController.Create(Models.Dtos.VideoForCreateDto)">
+            <summary>
+            Creates a new video for a given course.
+            </summary>
+            <param name="dto">A VideoForCreateDto object that contains the necessary information to create a new video.</param>
+            <returns>An action result containing the newly created video as a VideoDto { 
+            VideoId: An integer that represents the unique identifier of the video.
+            VideoTitle: A string that represents the title of the video.
+            VideoUrl: A string that represents the URL of the video } object.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.VideosController.Update(Models.Dtos.VideoForUpdateDto,System.Int32,System.Int32)">
+            <summary>
+            Updates the title and URL of a video for a given course.
+            </summary>
+            <param name="dto">A VideoForUpdateDto object that contains the new title and URL for the video.</param>
+            <param name="courseId">The ID of the course that the video belongs to.</param>
+            <param name="videoId">The ID of the video to update.</param>
+            <returns>An action result indicating the success or failure of the update operation.</returns>
+        </member>
+        <member name="M:WebApi.Controllers.VideosController.Delete(System.Int32)">
+            <summary>
+            Deletes a video with the specified ID from the database and the associated file from storage.
+            </summary>
+            <param name="videoId">The ID of the video to delete.</param>
+            <returns>An action result indicating whether the deletion was successful.</returns>
+        </member>
+        <member name="M:WebApi.Middlewares.ErrorHandlerMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Logging.ILogger{WebApi.Middlewares.ErrorHandlerMiddleware})">
+            <summary>
+            Constructs an instance of the ErrorHandlerMiddleware class.
+            </summary>
+            <param name="next">The next middleware delegate.</param>
+            <param name="logger">An instance of the ILogger interface used for logging.</param>
+        </member>
+        <member name="M:WebApi.Middlewares.ErrorHandlerMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Invokes the middleware function.
+            </summary>
+            <param name="context">The HttpContext.</param>
+        </member>
+    </members>
+</doc>

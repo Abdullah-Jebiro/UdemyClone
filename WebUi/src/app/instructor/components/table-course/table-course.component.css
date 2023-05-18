@@ -1,0 +1,77 @@
+thead th {
+  width: min-content;
+  font-size: 18px;
+}
+* {
+  border-radius: 0;
+}
+
+table {
+  text-align: center;
+}
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.card * {
+  background-color: #ffffff;
+}
+
+.container-fluid {
+  position: relative;
+}
+
+.nav div {
+  position: fixed;
+  z-index: 999;
+  color: white;
+  width: 55px;
+  height: 55px;
+  border-radius: 50px;
+  background-color: var(--mainColor);
+  bottom: 5px;
+  right: 5px;
+}
+.nav div:last-child {
+  right: 75px;
+}
+.nav div i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  margin: 0;
+}
+.input-filter {
+  border: none;
+  outline: none;
+  border-bottom: 1px #aaa solid;
+  background-color: #f8f9fa;
+  font-size: 22px;
+  width: 90%;
+  padding: 5px;
+}
+
+.fas {
+  opacity: 0.8;
+  margin: 8px;
+  font-size: 22px;
+  background-color: transparent !important;
+}
+.fas:hover {
+  opacity: 1;
+  font-size: 30px;
+}
+.fa-pen {
+  color: blue;
+}
+
+.fa-trash-alt {
+  color: red;
+}
+
+.isDelete td {
+  background-color: rgb(233, 167, 167) !important;
+}

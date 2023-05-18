@@ -1,0 +1,24 @@
+<div class="container">
+
+    <div class="p-2 pt-5 p-md-5">
+        <div class="mx-md-5  p-2 ">
+            <h3>Profile</h3>
+            <hr>
+            <form [formGroup]="userUpdateForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+
+
+                <div class="form-group my-4">
+                    <label class="py-2" for="about">about</label>
+                    <input id="about" type="about" class="form-control" formControlName="about" />
+                </div>
+
+                <app-file-upload formControlName="ProfilePictureUrl" [fileType]="'Image'" [title]="'ProfilePicture'"
+                    [directory]="'ProfilePicture'"></app-file-upload>
+
+                <button [disabled]="userUpdateForm.invalid" type="submit" class="btn background-MainColor w-100 my-4">
+                    <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
+                    <span *ngIf="!isLoading">Save</span>
+                </button>
+            </form>
+        </div>
+    </div>

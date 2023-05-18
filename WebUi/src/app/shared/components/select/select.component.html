@@ -1,0 +1,7 @@
+<label class="fw-bold my-1" for="">{{title}}: </label>
+<div class="select">
+    <select [ngModel]="selectedValue" (ngModelChange)="onChange($event)" (blur)="onTouched()" name="format" id="format">
+        <option value="-1" selected>{{defaultOption}}</option>
+        <option value="{{option.key}}" *ngFor="let option of data">{{option.value}}</option>
+    </select>
+</div>

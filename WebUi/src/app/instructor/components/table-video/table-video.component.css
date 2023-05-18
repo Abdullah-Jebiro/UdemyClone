@@ -1,0 +1,43 @@
+.content {
+  height: 100vh;
+  overflow-x: auto;
+}
+.active {
+  background-color: cornflowerblue;
+}
+
+.fas {
+  opacity: 0.8;
+  margin: 6px;
+  font-size: 22px;
+  background-color: transparent !important;
+}
+.fas:hover {
+  opacity: 1;
+}
+
+.btn-create {
+  position: fixed;
+  z-index: 999;
+  color: white;
+  width: 55px;
+  height: 55px;
+  border-radius: 50px;
+  background-color: cornflowerblue;
+  bottom: 5px;
+  right: 10px;
+}
+.fa-plus {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  margin: 0;
+}
+.fa-trash-alt:hover {
+  color: rgb(226, 54, 54);
+}
+.fa-pen:hover {
+  color: blue;
+}

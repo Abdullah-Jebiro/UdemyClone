@@ -1,0 +1,7 @@
+.content {
+  height: 100vh;
+  overflow-x: auto;
+}
+.active {
+  background-color: cornflowerblue;
+}

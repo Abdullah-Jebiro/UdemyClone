@@ -1,0 +1,36 @@
+<header>
+  <span [routerLink]="['/Home']" class="logo" style="cursor: pointer;"><span>U</span>demy</span>
+
+  <form *ngIf="search" class="search-form d-none d-xl-block" [ngClass]="{ active: isSearchBarActive }">
+    <input type="text" placeholder="Search courses" class="searchBox" name="search" [(ngModel)]="searchInput"
+      (keyup.enter)="performSearch()" />
+  </form>
+
+  <div class="d-flex align-items-center justify-content-center">
+    <ul class="main-nav d-none d-md-flex">
+      <li>
+        <span [routerLink]="['/Instructor/Course']">Instructor</span>
+      </li>
+      <li>
+        <span [routerLink]="['/Home'] " [queryParams]="{MyCourses:true}">My courses</span>
+      </li>
+    </ul>
+    <div class="icons">
+      <div *ngIf="search" class="search-btn fas fa-search d-inline-block d-xl-none" (click)="toggleSearchBar()"></div>
+      <div class="menu-btn fas fa-bars d-inline-block d-md-none" (click)="toggleMobileMenu()"></div>
+      <div *ngIf="filter" class="fa-solid fa-filter d-inline-block d-md-none" (click)="toggleFilter()"></div>
+      <div *ngIf="countItems!=undefined" class="fa-solid fa-cart-shopping" [routerLink]="['/Cart']">
+        <span> {{ countItems }}</span>
+      </div>
+      <div class="fa-solid fa-right-from-bracket" (click)="signOut()"></div>
+      <div class="fa-solid fa-cog fa-right-from-bracket" isAdmin [routerLink]="['/Admin']"></div>
+
+
+    </div>
+  </div>
+
+  <nav class="navbar d-flex flex-column d-md-none" [ngClass]="{ active: isMobileMenuActive }">
+    <a [routerLink]="['/Home'] " [queryParams]="{MyCourses:true}"> My courses </a>
+    <a [routerLink]="['/Instructor/Course']"> Instructor </a>
+  </nav>
+</header>

@@ -1,0 +1,92 @@
+<div class="container">
+    <section class="p-2 pt-2 md-2 p-md-5">
+        <div class="card mx-md-5">
+            <form class="m-4" [formGroup]="createCourseForm" (ngSubmit)="onSubmit()">
+
+                <label class="fw-bold" for="">Name: </label>
+                <input formControlName="name" [ngClass]="{'is-valid':createCourseForm.get('name')?.valid}" type="text"
+                    class="form-control mb-3">
+                <div *ngIf="createCourseForm.get('name')?.errors && createCourseForm.get('name')?.dirty"
+                    class="alert alert-danger p-1">
+                    <p *ngIf="createCourseForm.get('name')?.getError('required')" class="m-0">name Is Required
+                    </p>
+                    <p *ngIf="createCourseForm.get('name')?.getError('minlength')" class="m-0">name Is min char 3
+                    </p>
+                </div>
+
+
+                <label class="fw-bold" for="">Description: </label>
+                <input formControlName="description" [ngClass]="{'is-valid':createCourseForm.get('description')?.valid}"
+                    type="description" class="form-control mb-3">
+                <div *ngIf="createCourseForm.get('description')?.errors && createCourseForm.get('description')?.dirty"
+                    class="alert alert-danger p-1">
+                    <p *ngIf="createCourseForm.get('description')?.getError('required')" class="m-0">description Is
+                        Required</p>
+                    <p *ngIf="createCourseForm.get('description')?.getError('minlength')" class="m-0">description Is min
+                        char 3
+                    </p>
+                </div>
+
+
+                <label class="fw-bold" for="">Price: </label>
+                <input formControlName="price" [ngClass]="{'is-valid':createCourseForm.get('price')?.valid}"
+                    type="price" class="form-control mb-3">
+                <div *ngIf="createCourseForm.get('price')?.errors && createCourseForm.get('price')?.dirty"
+                    class="alert alert-danger p-1">
+                    <p *ngIf="createCourseForm.get('price')?.getError('required')" class="m-0">price Is Required
+                    </p>
+                    <p *ngIf="createCourseForm.get('price')?.getError('pattern')" class="m-0">The price should only be a
+                        number</p>
+                </div>
+
+
+                <label class="fw-bold" for="">About: </label>
+                <input formControlName="about" [ngClass]="{'is-valid':createCourseForm.get('about')?.valid}" type="text"
+                    class="form-control mb-3">
+                <div *ngIf="createCourseForm.get('about')?.errors && createCourseForm.get('about')?.dirty"
+                    class="alert alert-danger p-1">
+                    <p *ngIf="createCourseForm.get('about')?.getError('required')" class="m-0">about Is Required</p>
+                    <p *ngIf="createCourseForm.get('about')?.getError('minlength')" class="m-0">about Is min
+                        char 3
+                    </p>
+                </div>
+
+                <app-file-upload formControlName="thumbnailUrl" [title]="'ThumbnailUrl'" [fileType]="'Image'"
+                    [directory]="'thumbnail'"></app-file-upload>
+                <div *ngIf="createCourseForm.get('thumbnailUrl')?.errors && createCourseForm.get('thumbnailUrl')?.dirty"
+                    class="alert alert-danger p-1">
+                    <p *ngIf="createCourseForm.get('thumbnailUrl')?.getError('required')" class="m-0">thumbnailUrl Is
+                        Required</p>
+                    <p *ngIf="createCourseForm.get('thumbnailUrl')?.getError('pattern')" class="m-0">
+                        Invalid file type. Only JPG, PNG , WEBP and GIF files are allowed.
+                    </p>
+                </div>
+
+
+                <app-select [formGroup]="createCourseForm" formControlName="languageId" class="mb-2"
+                    style="display: block;" [data]=languages [title]="'Languages'"
+                    [defaultOption]="'Choose option'"></app-select>
+
+
+                <app-select [formGroup]="createCourseForm" formControlName="levelId" class="mb-2"
+                    style="display: block;" [data]=levels [title]="'Levels'"
+                    [defaultOption]="'Choose option'"></app-select>
+
+
+                <app-select [formGroup]="createCourseForm" formControlName="categoryId" class="mb-2"
+                    style="display: block;" [data]=Categories [title]="'Categories'"
+                    [defaultOption]="'Choose option'"></app-select>
+
+
+                <button [disabled]="createCourseForm.invalid" type="submit" class="btn background-MainColor w-100">
+                    <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
+
+                    <span *ngIf="!isLoading">Submit</span>
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+</div>

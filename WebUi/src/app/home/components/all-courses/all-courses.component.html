@@ -1,0 +1,62 @@
+<app-header [countItems]="countItemsOfCart" (searchTerm)="onSearch($event)"
+  (filterStatusChange)="toggleFilter()"></app-header>
+<div class="container-fluid mt-5 pt-5">
+  <div class="row g-1">
+    <div class="col-md-3 my-5 d-none d-md-block" [ngClass]="{ action: filterStatus }">
+      <i *ngIf="filterStatus" class="fa-solid fa-filter-circle-xmark" (click)="toggleFilter()"></i>
+
+      <form class="filter m-4" [formGroup]="filterForm">
+        <app-select class="mb-2" [formGroup]="filterForm" formControlName="languageId" [data]="languages"
+          [title]="'Languages'" [defaultOption]="'All'"></app-select>
+
+        <app-select class="mb-2" [formGroup]="filterForm" formControlName="levelId" [data]="levels" [title]="'Levels'"
+          [defaultOption]="'All'"></app-select>
+
+        <app-select class="mb-2" [formGroup]="filterForm" formControlName="categoryId" [data]="categories"
+          [title]="'Categories'" [defaultOption]="'All'"></app-select>
+
+        <app-select class="mb-2" [formGroup]="filterForm" formControlName="instructorId" [data]="instructors"
+          [title]="'Instructors'" [defaultOption]="'All'"></app-select>
+
+        <div class="fw-bold my-1">Price:</div>
+        <div>
+          <input type="number" [formGroup]="filterForm" formControlName="minPrice" />
+          <span class="range-to">to</span>
+          <input type="number" [formGroup]="filterForm" formControlName="maxPrice" />
+        </div>
+      </form>
+    </div>
+
+    <div class="col-md-9 col-12 courses">
+      <div *ngIf="isLoading; else coursesSection"
+        class="d-flex d-flex justify-content-center align-items-center wifi-loader">
+        <div id="wifi-loader">
+          <svg class="circle-outer" viewBox="0 0 86 86">
+            <circle class="back" cx="43" cy="43" r="40"></circle>
+            <circle class="front" cx="43" cy="43" r="40"></circle>
+            <circle class="new" cx="43" cy="43" r="40"></circle>
+          </svg>
+          <svg class="circle-middle" viewBox="0 0 60 60">
+            <circle class="back" cx="30" cy="30" r="27"></circle>
+            <circle class="front" cx="30" cy="30" r="27"></circle>
+          </svg>
+          <svg class="circle-inner" viewBox="0 0 34 34">
+            <circle class="back" cx="17" cy="17" r="14"></circle>
+            <circle class="front" cx="17" cy="17" r="14"></circle>
+          </svg>
+          <div class="text" data-text="Searching"></div>
+        </div>
+      </div>
+
+      <ng-template #coursesSection>
+        <div class="My-learning py-3" *ngIf="onlyUserCourses">
+          <p>My learning</p>
+        </div>
+        <app-courses-section [courses]="courses"></app-courses-section>
+        <div class="fa-solid fa-angles-down angles" [ngClass]="{ disabled: currentPage >= totalPages }"
+          (click)="getNextPage()"></div>
+      </ng-template>
+
+    </div>
+  </div>
+</div>

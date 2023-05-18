@@ -1,0 +1,28 @@
+<div class="btn-create d-flex justify-content-between align-items-center"
+    [routerLink]="['/Instructor/Course/'+courseId+'/Videos/Create']">
+    <i class="fas fas fa-plus"> </i>
+</div>
+<div *ngIf="videoUrl" class="container-fluid">
+    <div class="row gx-1">
+        <div class="col-12 col-xl-9">
+            <div class="border bg-light ">
+                <video width="100%" src="{{videoBaseUrl+videoUrl}}" autoplay muted controls></video>
+            </div>
+        </div>
+        <div class="col-12 col-xl-3 content bg-light">
+            <div class="border">
+                <div class="border" [ngClass]="{ 'active': video.videoId === activeVideo }" id={{video.videoId}}
+                    *ngFor="let video of videos">
+                    <div class="p-3" (click)="play(video.videoUrl,video.videoId )">
+                        {{video.videoTitle}}</div>
+                    <div>
+                        <i class="fas fa-trash-alt" (click)="deleteVideo(video.videoId)"></i>
+                        <i [routerLink]="['/Instructor/Course/'+courseId+'/Videos/Update/'+video.videoId]"
+                            class="fas fa-pen"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

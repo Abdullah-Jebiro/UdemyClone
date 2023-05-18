@@ -1,0 +1,150 @@
+<div class="container">
+  <section class="p-2 pt-2 md-2 p-md-5">
+    <div class="card mx-md-5">
+      <div class="text-center my-2">
+        <h2>Welcome</h2>
+      </div>
+
+      <p style="color: lightslategray; text-align: center; margin-top: 10px">
+        Please enter your register details
+      </p>
+      <form class="m-4" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <label class="fw-bold" for="">userName: </label>
+        <input
+          formControlName="userName"
+          [ngClass]="{ 'is-valid': registerForm.get('userName')?.valid }"
+          type="text"
+          class="form-control mb-3"
+        />
+        <div
+          *ngIf="
+            registerForm.get('userName')?.errors &&
+            registerForm.get('userName')?.dirty
+          "
+          class="alert alert-danger p-1"
+        >
+          <p
+            *ngIf="registerForm.get('userName')?.getError('required')"
+            class="m-0"
+          >
+            UserName Is Required
+          </p>
+          <p
+            *ngIf="registerForm.get('userName')?.getError('minlength')"
+            class="m-0"
+          >
+            UserName Is min char 6
+          </p>
+          <p
+            *ngIf="registerForm.get('userName')?.getError('maxlength')"
+            class="m-0"
+          >
+            UserName Is max char 20
+          </p>
+          <p
+            *ngIf="registerForm.get('userName')?.getError('pattern')"
+            class="m-0"
+          >
+            Input must be alphanumeric
+          </p>
+        </div>
+
+        <label class="fw-bold" for="">email: </label>
+        <input
+          formControlName="email"
+          [ngClass]="{ 'is-valid': registerForm.get('email')?.valid }"
+          type="email"
+          class="form-control mb-3"
+        />
+        <div
+          *ngIf="
+            registerForm.get('email')?.errors &&
+            registerForm.get('email')?.dirty
+          "
+          class="alert alert-danger p-1"
+        >
+          <p
+            *ngIf="registerForm.get('email')?.getError('required')"
+            class="m-0"
+          >
+            email Is Required
+          </p>
+          <p *ngIf="registerForm.get('email')?.getError('email')" class="m-0">
+            Enter Valid Email
+          </p>
+        </div>
+
+        <label class="fw-bold" for="">password: </label>
+        <input
+          formControlName="password"
+          [ngClass]="{ 'is-valid': registerForm.get('password')?.valid }"
+          type="password"
+          class="form-control mb-3"
+        />
+        <div
+          *ngIf="
+            registerForm.get('password')?.errors &&
+            registerForm.get('password')?.dirty
+          "
+          class="alert alert-danger p-1"
+        >
+          <p
+            *ngIf="registerForm.get('password')?.getError('required')"
+            class="m-0"
+          >
+            password Is Required
+          </p>
+          <p
+            *ngIf="registerForm.get('password')?.getError('pattern')"
+            class="m-0"
+          >
+            Password should be 6-10 chars with 1 uppercase, 1 lowercase & 1
+            special character
+          </p>
+        </div>
+
+        <label class="fw-bold" for="">ConfirmPassword: </label>
+        <input
+          formControlName="ConfirmPassword"
+          [ngClass]="{ 'is-valid': registerForm.get('ConfirmPassword')?.valid }"
+          type="password"
+          class="form-control mb-3"
+        />
+        <div
+          *ngIf="
+            registerForm.get('ConfirmPassword')?.errors &&
+            registerForm.get('ConfirmPassword')?.dirty
+          "
+          class="alert alert-danger p-1"
+        >
+          <p
+            *ngIf="registerForm.get('ConfirmPassword')?.getError('required')"
+            class="m-0"
+          >
+            ConfirmPassword Is Required
+          </p>
+
+          <p
+            *ngIf="registerForm.get('ConfirmPassword')?.getError('math')"
+            class="m-0"
+          >
+            password and ConfirmPassword not math
+          </p>
+        </div>
+
+        <button
+          [disabled]="this.registerForm.invalid"
+          type="submit"
+          class="btn background-MainColor w-100"
+        >
+          <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
+          <span *ngIf="!isLoading">Submit</span>
+        </button>
+      </form>
+      <div class="card-footer text-right">
+        Already have an account?
+        <span class="link m-1" [routerLink]="['../Login']">Login</span>
+      </div>
+    </div>
+  </section>
+</div>

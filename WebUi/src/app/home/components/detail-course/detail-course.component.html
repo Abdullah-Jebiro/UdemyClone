@@ -1,0 +1,113 @@
+<app-header [filter]="false" [search]="false"></app-header>
+<div class="row g-0" *ngIf="Course">
+  <div class="top-container">
+    <div class="column col-12 col-lg-9">
+      <div class="col-9 col-lg-12">
+        <img class="d-block d-md-none" src="{{ imageBaseUrl + Course.thumbnailUrl }} " alt="..."
+          style="width: 100%; height: 100%" />
+        <p class="heading">{{ Course.name }}</p>
+        <p class="text">{{ Course.about }}</p>
+      </div>
+      <p>
+        <span class="badge">Bestseller</span>
+        <span>{{ Course.studentsCount }} students</span>
+      </p>
+      <p>
+        Created by <span class="link">{{ Course.instructor }}</span>
+      </p>
+      <p><i class="fas fa-globe-americas"></i> {{ Course.language }}</p>
+      <p class="d-block d-md-none">price : {{ Course.price | currency | zeroToFree}}</p>
+      <div class="d-block d-md-none">
+        <button *ngIf="Course.status == 'NoAction'" type="button" class="my-btn btn-addToCart text-center"
+          (click)="addToCart(Course.courseId)">
+          Add to Cart
+        </button>
+        <button *ngIf="Course.status == 'Bought'" type="button" class="my-btn btn-goToCourse text-center"
+          [routerLink]="['/Home/Course', Course.courseId]">
+          Go to Course
+        </button>
+        <button *ngIf="Course.status == 'InCart'" type="button" class="my-btn btn-goToCart text-center"
+          [routerLink]="['/Cart']">
+          Go to Cart
+        </button>
+      </div>
+    </div>
+    <div class="d-none d-md-block col-md-3 card_course">
+      <div class="col">
+        <div class="card mt-5">
+          <div>
+            <div>
+              <img src="{{ imageBaseUrl + Course.thumbnailUrl }} " alt="..." style="width: 100%; height: 275px" />
+            </div>
+            <div class="ps-2">
+              <div title="{{ Course.name }}" class="title">
+                {{ Course.name }}
+              </div>
+              <p class="price pt-1">{{ Course.price | currency | zeroToFree }}</p>
+            </div>
+          </div>
+
+          <button *ngIf="Course.status == 'NoAction' && Course.price > 0" type="button"
+            class="my-btn btn-addToCart text-center" (click)="addToCart(Course.courseId)">
+            Add to Cart
+          </button>
+          <button *ngIf="Course.status == 'Bought'" type="button" class="my-btn btn-goToCourse text-center"
+            [routerLink]="['/Home/Course', Course.courseId]">
+            Go to Course
+          </button>
+          <button *ngIf="Course.status == 'InCart'" type="button" class="my-btn btn-goToCart text-center"
+            [routerLink]="['/Cart']">
+            Go to Cart
+          </button>
+          <button *ngIf="Course.status == 'NoAction' && Course.price == 0" type="button"
+            class="my-btn btn-goToCart text-center" [routerLink]="['/Cart']">
+            Add My Courses
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column col-12 col-lg-9 pb-5">
+    <p class="heading my-4">Course content</p>
+    <P class="mb-2 p-0"> {{ Course.videosCount }} lectures</P>
+
+    <div *ngFor="let video of Videos">
+      <div class="row g-1 lesson p-2 my-0">
+        <p class="col-10 m-0">{{ video.videoTitle }}</p>
+      </div>
+    </div>
+    <div>
+      <p class="heading my-4">Description</p>
+      <div class="p-0">
+        {{ Course.description }}
+      </div>
+    </div>
+    <div class="Instructor">
+      <p class="heading my-2">Instructor</p>
+
+      <p class="link Instructor" style="color: #5624d0">
+        {{ Course.instructor }}
+      </p>
+
+      <div class="d-flex flex-row">
+        <div>
+          <img src="{{ imageBaseUrl + Course.profilePictureUrl }} " class="img-fluid" alt="..." />
+        </div>
+
+        <div class="d-flex flex-column justify-content-center ms-4">
+          <p>
+            <i class="fa-solid fa-users"></i>
+            <span class="mx-2">{{ Course.studentsCountForInstructor }} Students
+            </span>
+          </p>
+          <p>
+            <i class="fa-solid fa-circle-play"></i><span class="mx-2">{{ Course.studentsCountForInstructor }}
+              Courses
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-0 col-md-3"></div>
+</div>

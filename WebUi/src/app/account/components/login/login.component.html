@@ -1,0 +1,68 @@
+<div class="container vh-100">
+  <div class="row justify-content-center align-items-center h-100">
+    <div class="card login p-0">
+      <div class="card-body">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="text-center my-4">
+            <h2>Welcome</h2>
+          </div>
+
+          <p style="color: lightslategray; text-align: center; margin-top: 10px">
+            Please enter your login details
+          </p>
+
+          <div class="form-group mb-3 mt-4">
+            <input required type="text" id="email" class="form-control" formControlName="email" />
+            <span class="myPlaceholder px-2">email</span>
+            <i [ngClass]="{
+                isValid: loginForm.get('email')?.valid,
+                isNotValid:
+                  !loginForm.get('email')?.valid &&
+                  loginForm.get('email')?.touched
+              }">
+            </i>
+            <span class="requirements px-2" *ngIf="loginForm.get('email')?.errors?.['required']
+                             && loginForm.get('email')?.dirty ">Email this required</span>
+            <span class="requirements px-2" *ngIf="loginForm.get('email')?.errors?.['email']
+                             && loginForm.get('email')?.dirty ">is not Email</span>
+          </div>
+
+          <div class="form-group my-4">
+            <input required type="password" class="form-control" formControlName="password" />
+            <span class="myPlaceholder px-2">password</span>
+            <i [ngClass]="{
+                isValid: loginForm.get('password')?.valid,
+                isNotValid:
+                  !loginForm.get('password')?.valid &&
+                  loginForm.get('password')?.touched
+              }">
+            </i>
+            <span class="requirements px-2" *ngIf="loginForm.get('password')?.errors?.['required'] && 
+                            loginForm.get('password')?.dirty ">Password this required</span>
+          </div>
+
+          <input [disabled]="this.loginForm.invalid" type="submit" class="btn background-MainColor w-100"
+            value="Login" />
+
+          <div class="text-center m-2" data-bs-toggle="modal" data-bs-target="#ForgotPasswordModal">
+            or<span class="link m-1">ForgotPassword</span>
+          </div>
+        </form>
+      </div>
+
+      <div class="card-footer text-right">
+        Don't have an account?<span class="link m-1" [routerLink]="['../Register']">Sign up</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="ForgotPasswordModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <app-forgot-password></app-forgot-password>
+      </div>
+    </div>
+  </div>
+</div>

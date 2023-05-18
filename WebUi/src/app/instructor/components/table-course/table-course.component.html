@@ -1,0 +1,81 @@
+<app-header [filter]="false" (searchTerm)="onSearch($event)"></app-header>
+
+<div class="container-fluid p-3">
+    <div class="nav d-flex  justify-content-center align-items-center">
+        <div [routerLink]=" ['/Instructor/Update']"> <i class="fas fa-user-edit"></i></div>
+        <div [routerLink]="['/Instructor/Course/Create']"> <i class="fas fa-plus"></i></div>
+    </div>
+    <div class="card ">
+        <div class="card-bady">
+            <div class="card-bady">
+                <div class="table-responsive background-table">
+                    <table class="table table-light table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>About</th>
+                                <th>Price</th>
+                                <th>Students</th>
+                                <th>Videos</th>
+                                <th>Category</th>
+                                <th>Language</th>
+                                <th>Level</th>
+                                <th>Thumbnail</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let Course of coursesFilter | paginate: { itemsPerPage: 3, currentPage: currentPage, totalItems:totalItems ,id: 'Course' }"
+                                [ngClass]="{isDelete : Course.isDelete} ">
+                                <td>
+                                    {{Course.name}}
+                                </td>
+                                <td>
+                                    {{Course.description}}
+                                </td>
+                                <td>
+                                    {{Course.about}}
+                                </td>
+                                <td>
+                                    {{Course.price}}
+                                </td>
+                                <td>
+                                    {{Course.studentsCount}}
+                                </td>
+                                <td>
+                                    {{Course.videosCount}}
+                                </td>
+                                <td>
+                                    {{Course.category}}
+                                </td>
+                                <td>
+                                    {{Course.language}}
+                                </td>
+                                <td>
+                                    {{Course.level}}
+                                </td>
+                                <td>
+                                    <img src="{{imageBaseUrl+Course.thumbnailUrl}} " alt="..."
+                                        style="width: 275px; height:275px;">
+                                </td>
+                                <td>
+                                    <i *ngIf="!Course.isDelete || !Course.studentsCount" class="fas fa-trash-alt"
+                                        (click)="deleteCourse(Course.courseId)"></i>
+                                    <i [routerLink]="['/Instructor/Course/Update/',Course.courseId]"
+                                        class="fas fa-pen"></i>
+                                    <i [routerLink]="['/Instructor/Course/'+Course.courseId+'/Videos']"
+                                        class="fas fa-film"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <pagination-controls class=" m-auto" (pageChange)="pageChanged($event)"
+                        [routerLink]="['/Instructor/Course']" [queryParams]="{currentPage:currentPage}"
+                        id="Course"></pagination-controls>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

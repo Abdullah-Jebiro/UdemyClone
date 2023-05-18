@@ -1,0 +1,16 @@
+<label class="fw-bold my-1" for="">{{ title }}: </label>
+<div class="button-wrap">
+  <label class="button py-2" for="upload">Upload File</label>
+  <input
+    [(ngModel)]="fileName"
+    (blur)="onTouched()"
+    type="file"
+    id="upload"
+    (change)="onFileSelected($event)"
+  />
+  <label label="button py-2">{{ fileName }}</label>
+  <div *ngIf="uploadProgress">
+    <progress [value]="uploadProgress" max="100"></progress>
+    <span>{{ uploadProgress }}%</span>
+  </div>
+</div>

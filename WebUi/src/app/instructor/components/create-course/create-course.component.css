@@ -1,0 +1,12 @@
+.form-control {
+  border-color: var(--bg-color-2);
+  box-shadow: var(--box-shadow);
+}
+* {
+  border-radius: 0;
+}
+.form-control.is-valid:focus,
+.was-validated .form-control:valid:focus {
+  border-color: var(--mainColor);
+  box-shadow: var(--box-shadow);
+}

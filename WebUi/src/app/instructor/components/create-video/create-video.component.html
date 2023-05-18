@@ -1,0 +1,47 @@
+<div class="container">
+
+    <section class="p-2 pt-2 md-2 p-md-5">
+
+        <div class="card mx-md-5">
+
+            <form class="m-4" [formGroup]="createVideoForm" (ngSubmit)="onSubmit()">
+
+                <label class="fw-bold" for="">VideoTitle: </label>
+                <input formControlName="VideoTitle" [ngClass]="{'is-valid':createVideoForm.get('VideoTitle')?.valid}"
+                    type="text" class="form-control mb-3">
+                <div *ngIf="createVideoForm.get('VideoTitle')?.errors && createVideoForm.get('VideoTitle')?.dirty"
+                    class="alert alert-danger p-1">
+                    <p *ngIf="createVideoForm.get('VideoTitle')?.getError('required')" class="m-0">VideoTitle Is
+                        Required
+                    </p>
+                    <p *ngIf="createVideoForm.get('VideoTitle')?.getError('minlength')" class="m-0">VideoTitle Is min
+                        char 3
+                    </p>
+                </div>
+
+                <app-file-upload formControlName="videoUrl" [title]="'Video'" [fileType]="'Video'"
+                    [directory]="courseId"></app-file-upload>
+                <div *ngIf="createVideoForm.get('videoUrl')?.errors && createVideoForm.get('videoUrl')?.dirty"
+                    class="alert alert-danger p-1">
+                    <p *ngIf="createVideoForm.get('videoUrl')?.getError('required')" class="m-0">videoUrl Is
+                        Required</p>
+                    <p *ngIf="createVideoForm.get('videoUrl')?.getError('pattern')" class="m-0">
+                        Invalid file type. Only JPG, PNG and GIF files are allowed.
+                    </p>
+                </div>
+
+                <button [disabled]="createVideoForm.invalid" type="submit" class="mt-2 btn background-MainColor w-100">
+                    <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
+                    <span *ngIf="!isLoading">Submit</span>
+
+                    {{createVideoForm.value|json}}
+
+                </button>
+
+
+            </form>
+        </div>
+
+
+    </section>
+</div>

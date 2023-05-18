@@ -1,0 +1,32 @@
+<app-header [countItems]="countItems" (searchTerm)="onSearch($event)" [filter]="false"></app-header>
+<div class="container-fluid p-5 pt-0 margin-72px">
+  <h3 class="mb-4 fw-bold fs-1">Shopping Cart</h3>
+  <p class="fw-semibold m-0">{{ countItems }} Courses in Cart</p>
+  <div class="row g-0">
+    <div class="col-12 col-md-9">
+      <hr />
+      <div *ngFor="let item of cartItemsFilter">
+        <div class="d-flex align-items-center">
+          <img src="{{ imageBaseUrl + item.thumbnailUrl }} " alt="..." style="width: 100px; height: 100%" />
+          <div class="d-flex flex-column flex-sm-row justify-content-start align-items-end align-items-sm-center w-100">
+            <div class="d-flex name mx-3 flex-column w-90">
+              <p class="fw-semibold m-0 mb-1">{{ item.name }}</p>
+              <p class="fw-lighter mb-1">{{ item.about }}</p>
+              <p class="remove m-0" (click)="removeItem(item.cartItemId)">
+                Remove
+              </p>
+            </div>
+            <div class="price-text mt-2">{{ item.price | currency | zeroToFree}}</div>
+          </div>
+        </div>
+        <hr />
+      </div>
+    </div>
+    <div class="col-12 col-md-3 py-5 ps-5">
+
+      <p class="fw-semibold ext-muted  m-0">Total:</p>
+      <strong class="fs-3">{{ totalPrice | currency }}</strong>
+      <button *ngIf="totalPrice" class="btn-checkout" [routerLink]="['/Checkout']">Checkout</button>
+    </div>
+  </div>
+</div>

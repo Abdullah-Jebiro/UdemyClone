@@ -1,0 +1,25 @@
+.w-90 {
+  width: 90%;
+}
+app-header + * {
+  margin-top: 72px;
+}
+.price-text {
+  font-weight: 600;
+  letter-spacing: -0.02rem;
+}
+
+.remove {
+  color: var(--main-color);
+  cursor: pointer;
+}
+
+.btn-checkout {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}

@@ -1,0 +1,196 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile>WebApiUdemy.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\1hgrfxes1ioa2y21.jpg" />
+    <None Include="wwwroot\1y5pal4y3tw2o70u.jpg" />
+    <None Include="wwwroot\45678709.jpg" />
+    <None Include="wwwroot\ASfdghj.jpg" />
+    <None Include="wwwroot\b7oytuw.jpg" />
+    <None Include="wwwroot\Bootstrawafes.jpg" />
+    <None Include="wwwroot\clgg066ik00023na6b6tzuf52.png" />
+    <None Include="wwwroot\clgg08ddz00003na69xf3b25t.png" />
+    <None Include="wwwroot\clghvw91400013na6tbdasrb5.mp4" />
+    <None Include="wwwroot\clgj617b900003na6fomo5zxi.jpg" />
+    <None Include="wwwroot\clgjmm9wp00003na646o5w703.jpg" />
+    <None Include="wwwroot\clgjo8oua00003na6oe4qgska.mp4" />
+    <None Include="wwwroot\clgjo9isv00003na6i1msf8wq.mp4" />
+    <None Include="wwwroot\clgjrk5vy00003na6ylx2g06j.png" />
+    <None Include="wwwroot\clgk9s1kf00003na6i95v8gfy.jpg" />
+    <None Include="wwwroot\clgk9t0g000003na6nd1y2h98.jpg" />
+    <None Include="wwwroot\clgk9ujm000003na66h2btck0.png" />
+    <None Include="wwwroot\clgk9zk1200003na6mfqmihko.png" />
+    <None Include="wwwroot\clgka04rp00003na643zp61ew.gif" />
+    <None Include="wwwroot\clgka5zqq00003na6spy9tdja.png" />
+    <None Include="wwwroot\clgka7g5g00003na6n52obs74.gif" />
+    <None Include="wwwroot\clgkaen7o00003na6fimbiaii.png" />
+    <None Include="wwwroot\clgkaex9u00013na6p92qoo0r.png" />
+    <None Include="wwwroot\clgkahtd100003na6jjqvbrwi.png" />
+    <None Include="wwwroot\clgkai81f00003na64qylfmmj.png" />
+    <None Include="wwwroot\clgkam1xy00003na6ych5bisl.png" />
+    <None Include="wwwroot\clgkanr2w00003na6ibum1vlc.png" />
+    <None Include="wwwroot\clgkaoydn00003na6b5oqtfba.png" />
+    <None Include="wwwroot\clgkar1j100003na6di59owto.gif" />
+    <None Include="wwwroot\clgkasyn400003na603rxfk61.png" />
+    <None Include="wwwroot\clgkav0cd00003na6nedtov6k.gif" />
+    <None Include="wwwroot\clgkb1qzp00003na68wevpo1z.gif" />
+    <None Include="wwwroot\clgkb24jh00013na68ws24zzk.png" />
+    <None Include="wwwroot\clgs04itc00003na6srfliauw.jpg" />
+    <None Include="wwwroot\clgs08k6x00003na6dolufrvi.jpg" />
+    <None Include="wwwroot\clgtb71nm00003na6laweeeh4.jpg" />
+    <None Include="wwwroot\clh2aze7u00003na61qwe8y1k.jpg" />
+    <None Include="wwwroot\clh2b4a4a00003na6dub5ieho.jpg" />
+    <None Include="wwwroot\default.jpg" />
+    <None Include="wwwroot\EVR435TT.Jpg" />
+    <None Include="wwwroot\hqdefault.jpg" />
+    <None Include="wwwroot\iiiIllustrajkg.jpg" />
+    <None Include="wwwroot\node620AS.jpg" />
+    <None Include="wwwroot\TY78VOT.jpg" />
+    <None Include="wwwroot\uiygygyiow.jpg" />
+    <None Include="wwwroot\vhpb2v4z1154.jpg" />
+    <None Include="wwwroot\vhv3u3wg1dch.png" />
+    <None Include="wwwroot\Videos\Angular\A %281%29.mp4" />
+    <None Include="wwwroot\Videos\Angular\A %2810%29.mp4" />
+    <None Include="wwwroot\Videos\Angular\A %2811%29.mp4" />
+    <None Include="wwwroot\Videos\Angular\A %2812%29.mp4" />
+    <None Include="wwwroot\Videos\Angular\A %282%29.mp4" />
+    <None Include="wwwroot\Videos\Angular\A %283%29.mp4" />
+    <None Include="wwwroot\Videos\Angular\A %284%29.mp4" />
+    <None Include="wwwroot\Videos\Angular\A %285%29.mp4" />
+    <None Include="wwwroot\Videos\Angular\A %286%29.mp4" />
+    <None Include="wwwroot\Videos\Angular\A %287%29.mp4" />
+    <None Include="wwwroot\Videos\Angular\A %288%29.mp4" />
+    <None Include="wwwroot\Videos\Angular\A %289%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %281%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %2810%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %2811%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %2812%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %2813%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %2814%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %2815%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %2816%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %2817%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %2818%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %2819%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %282%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %2820%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %2821%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %2822%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %2823%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %2824%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %2825%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %2826%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %2827%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %2828%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %2829%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %283%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %2830%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %284%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %285%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %286%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %287%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %288%29.mp4" />
+    <None Include="wwwroot\Videos\ASP.NET\ASPNET %289%29.mp4" />
+    <None Include="wwwroot\Videos\Bootstrap\Bootstrap5AVCD %281%29.mp4" />
+    <None Include="wwwroot\Videos\Bootstrap\Bootstrap5AVCD %2810%29.mp4" />
+    <None Include="wwwroot\Videos\Bootstrap\Bootstrap5AVCD %2811%29.mp4" />
+    <None Include="wwwroot\Videos\Bootstrap\Bootstrap5AVCD %2812%29.mp4" />
+    <None Include="wwwroot\Videos\Bootstrap\Bootstrap5AVCD %282%29.mp4" />
+    <None Include="wwwroot\Videos\Bootstrap\Bootstrap5AVCD %283%29.mp4" />
+    <None Include="wwwroot\Videos\Bootstrap\Bootstrap5AVCD %284%29.mp4" />
+    <None Include="wwwroot\Videos\Bootstrap\Bootstrap5AVCD %285%29.mp4" />
+    <None Include="wwwroot\Videos\Bootstrap\Bootstrap5AVCD %286%29.mp4" />
+    <None Include="wwwroot\Videos\Bootstrap\Bootstrap5AVCD %287%29.mp4" />
+    <None Include="wwwroot\Videos\Bootstrap\Bootstrap5AVCD %288%29.mp4" />
+    <None Include="wwwroot\Videos\Bootstrap\Bootstrap5AVCD %289%29.mp4" />
+    <None Include="wwwroot\Videos\SQLServer\SQL %281%29.mp4" />
+    <None Include="wwwroot\Videos\SQLServer\SQL %2810%29.mp4" />
+    <None Include="wwwroot\Videos\SQLServer\SQL %2811%29.mp4" />
+    <None Include="wwwroot\Videos\SQLServer\SQL %2812%29.mp4" />
+    <None Include="wwwroot\Videos\SQLServer\SQL %2813%29.mp4" />
+    <None Include="wwwroot\Videos\SQLServer\SQL %2814%29.mp4" />
+    <None Include="wwwroot\Videos\SQLServer\SQL %282%29.mp4" />
+    <None Include="wwwroot\Videos\SQLServer\SQL %283%29.mp4" />
+    <None Include="wwwroot\Videos\SQLServer\SQL %284%29.mp4" />
+    <None Include="wwwroot\Videos\SQLServer\SQL %285%29.mp4" />
+    <None Include="wwwroot\Videos\SQLServer\SQL %286%29.mp4" />
+    <None Include="wwwroot\Videos\SQLServer\SQL %287%29.mp4" />
+    <None Include="wwwroot\Videos\SQLServer\SQL %288%29.mp4" />
+    <None Include="wwwroot\Videos\SQLServer\SQL %289%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %281%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2810%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2811%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2812%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2813%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2814%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2815%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2816%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2817%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2818%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2819%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %282%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2820%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2821%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2822%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2823%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2824%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2825%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2826%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2827%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2828%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2829%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %283%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2830%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2831%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2832%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2833%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2834%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2835%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2836%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2837%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %2838%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %284%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %285%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %286%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %287%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %288%29.mp4" />
+    <None Include="wwwroot\Videos\TypeScript\TS %289%29.mp4" />
+    <None Include="wwwroot\wqecqEwq21.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Serilog" Version="2.12.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+    <PackageReference Include="Serilog.Sinks.MSSqlServer" Version="6.3.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.28.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj" />
+    <ProjectReference Include="..\Models\Models.csproj" />
+    <ProjectReference Include="..\Services\Services.csproj" />
+  </ItemGroup>
+
+</Project>

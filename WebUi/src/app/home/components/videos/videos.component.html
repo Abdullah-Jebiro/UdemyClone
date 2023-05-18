@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="row gx-1">
+        <div class="col-12 col-xl-9">
+            <div class="border bg-light ">
+                <video width="100%" src="{{videoBaseUrl+videoUrl}}" autoplay muted controls></video>
+            </div>
+        </div>
+        <div class="col-12 col-xl-3 content bg-light">
+            <div class="border">
+                <div class="border" *ngFor="let video of videos" (click)="play(video.videoUrl,video.videoId )">
+                    <div class="p-3 " [ngClass]="{ 'active': video.videoId === activeVideo }" id={{video.videoId}}>
+                        {{video.videoTitle}}</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
