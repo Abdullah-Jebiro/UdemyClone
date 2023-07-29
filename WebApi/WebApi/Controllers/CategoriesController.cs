@@ -3,10 +3,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models.DbEntities;
 using Models.Dtos;
+using Models.Exceptions;
 using Services.Repos;
-
-
-
+using System.Net;
 
 namespace WebApi.Controllers
 {
@@ -36,7 +35,7 @@ namespace WebApi.Controllers
             var categories = await _unitOfWork.Categories.FindAllAsync(c => c.Courses.Count() >= minCourseCount);
             if (categories == null)
             {
-                return NotFound();
+                throw new ApiException(HttpStatusCode.NotFound);
             }
             var categoryDtos = _mapper.Map<IReadOnlyList<CategoryDto>>(categories);
             return Ok(categoryDtos);
@@ -51,7 +50,7 @@ namespace WebApi.Controllers
             var category = await _unitOfWork.Categories.GetByIdAsync(categoryId);
             if (category == null)
             {
-                return NotFound();
+                throw new ApiException(HttpStatusCode.NotFound);
             }
             var categoryDtos = _mapper.Map<CategoryDto>(category);
             return Ok(categoryDtos);
@@ -67,7 +66,7 @@ namespace WebApi.Controllers
             var existingCategory = await _unitOfWork.Categories.ExistsAsync(c => c.nameCategory.ToUpper() == toUpper);
             if (existingCategory)
             {
-                return BadRequest("A category with this name already exists.");
+                throw new ApiException(HttpStatusCode.BadRequest, "A category with this name already exists.");
             }
 
             var category = _mapper.Map<Category>(dto);
@@ -87,7 +86,7 @@ namespace WebApi.Controllers
             var category = await _unitOfWork.Categories.GetByIdAsync(categoryId);
             if (category == null)
             {
-                return NotFound($"The category with ID {categoryId} was not found.");
+                throw new ApiException(HttpStatusCode.NotFound, $"The category with ID {categoryId} was not found.");
             }
 
             // Update existing category properties using the properties in the DTO
@@ -106,7 +105,7 @@ namespace WebApi.Controllers
             var category = await _unitOfWork.Categories.GetByIdAsync(categoryId);
             if (category == null)
             {
-                return NotFound();
+                throw new ApiException(HttpStatusCode.NotFound);
             }
 
             // Soft delete the category

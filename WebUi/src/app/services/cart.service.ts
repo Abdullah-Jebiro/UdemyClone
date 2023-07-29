@@ -5,37 +5,35 @@ import { environment } from 'src/environments/environment';
 import { CartItemDto } from '../cart/models/CartItemDto';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
-
   apiUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getCountItems = this.http.get<number>(this.apiUrl + "Carts/Count").pipe(
+  getCountItems = this.http.get<number>(this.apiUrl + 'Carts/Count').pipe(
     tap((number) => console.log(number)),
     catchError(this.handleError)
   );
 
-  getItems = this.http.get<CartItemDto[]>(this.apiUrl + "Carts").pipe(
+  getItems = this.http.get<CartItemDto[]>(this.apiUrl + 'Carts').pipe(
     tap((number) => console.log(number)),
     catchError(this.handleError)
   );
 
   addToCart(itemId: number): Observable<any> {
     return this.http
-      .post(this.apiUrl + "Carts?courseId=" + itemId, null)
+      .post(this.apiUrl + 'Carts?courseId=' + itemId, null)
       .pipe(catchError(this.handleError));
   }
 
   RemoveItem(itemId: number): Observable<any> {
-    return this.http.delete(this.apiUrl + "Carts/" + itemId).pipe(
+    return this.http.delete(this.apiUrl + 'Carts/' + itemId).pipe(
       tap((data) => console.log(data)),
       catchError(this.handleError)
     );
   }
-
 
   handleError(error: HttpErrorResponse) {
     let errorMessage: string = '';
@@ -43,9 +41,11 @@ export class CartService {
       // client-side error
       errorMessage = ` client-side error` + error.error.message;
     } else {
-      // server-side error
-      errorMessage = `server-side error ${error.status} Message:${error.message}`;
+      errorMessage =
+     `Error Code: ${error.status == undefined ? 500 : error.status}
+      Message : ${error?.error?.Message == undefined ? error?.message : error?.error?.Message}`;
     }
+    console.log(errorMessage); 
     return throwError(() => errorMessage);
   }
 }

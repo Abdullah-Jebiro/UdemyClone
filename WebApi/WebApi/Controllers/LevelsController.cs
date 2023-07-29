@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models.DbEntities;
 using Models.Dtos;
+using Models.Exceptions;
 using Services.Repos;
+using System.Net;
 
 namespace WebApi.Controllers
 {
@@ -35,7 +37,7 @@ namespace WebApi.Controllers
             var levels = await _unitOfWork.Levels.GetAllAsync();
             if (levels == null)
             {
-                return NotFound();
+                throw new ApiException(HttpStatusCode.NotFound);
             }
             var levelDtos = _mapper.Map<IReadOnlyList<LevelDto>>(levels);
             return Ok(levelDtos);
@@ -53,7 +55,7 @@ namespace WebApi.Controllers
             var level = await _unitOfWork.Levels.GetByIdAsync(levelId);
             if (level == null)
             {
-                return NotFound();
+                throw new ApiException(HttpStatusCode.NotFound);
             }
             var levelDto = _mapper.Map<LevelDto>(level);
             return Ok(levelDto);
@@ -71,7 +73,8 @@ namespace WebApi.Controllers
             var existingLevel = await _unitOfWork.Levels.ExistsAsync(l => l.Name.ToUpper() == toUpper);
             if (existingLevel)
             {
-                return BadRequest("A level with this name already exists.");
+                return BadRequest();
+                throw new ApiException(HttpStatusCode.BadRequest, "A level with this name already exists.");
             }
 
             var level = _mapper.Map<Level>(dto);
@@ -94,7 +97,7 @@ namespace WebApi.Controllers
             var level = await _unitOfWork.Levels.GetByIdAsync(levelId);
             if (level == null)
             {
-                return NotFound($"The level with ID {levelId} was not found.");
+                throw new ApiException(HttpStatusCode.NotFound, $"The level with ID {levelId} was not found.");
             }
             _mapper.Map(dto, level);
             await _unitOfWork.Levels.UpdateAsync(level);
@@ -112,7 +115,7 @@ namespace WebApi.Controllers
             var level = await _unitOfWork.Levels.GetByIdAsync(levelId);
             if (level == null)
             {
-                return NotFound();
+                throw new ApiException(HttpStatusCode.NotFound, $"The level with ID {levelId} was not found.");
             }
             await _unitOfWork.Levels.DeleteAsync(level);
             return NoContent();

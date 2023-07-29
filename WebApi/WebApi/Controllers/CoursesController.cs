@@ -80,8 +80,9 @@ namespace WebApi.Controllers
             );
 
             if (Courses == null)
-                return NotFound("No courses found.");
-
+            {
+                throw new ApiException(HttpStatusCode.NotFound, "No courses found.");
+            }
 
             Response.Headers.Add("x-pagination", paginationData.ToString());
 
@@ -103,10 +104,9 @@ namespace WebApi.Controllers
 
 
             if (courses == null)
-                return NotFound($"No courses found for User with ID {userId}.");
-
-
-
+            {
+                throw new ApiException(HttpStatusCode.NotFound, $"No courses found for User with ID {userId}.");
+            }
             // Map the courses to the DTO format and return them
             return Ok(_mapper.Map<IReadOnlyList<CourseDto>>(courses));
         }
@@ -123,9 +123,11 @@ namespace WebApi.Controllers
             int userId = Convert.ToInt32(User.Identity.GetUserId());
             var (courses, paginationData) = await _unitOfWork.Courses.GetInstructorCourses(userId, pageNumber,pageSize);
             if (courses == null)
-                return NotFound("No courses found for instructor with ID {instructorId}.");
-            Response.Headers.Add("x-pagination", paginationData.ToString());
+            {
+                throw new ApiException(HttpStatusCode.NotFound, "No courses found for instructor.");
+            }
 
+            Response.Headers.Add("x-pagination", paginationData.ToString());
             return Ok(_mapper.Map<IReadOnlyList<CourseForInstructorDto>>(courses));
         }
 
@@ -147,8 +149,9 @@ namespace WebApi.Controllers
                 c => c.UserId == userId && c.CourseId == courseId);
 
             if (course == null)
-                return NotFound($"The course with ID {courseId} was not found.");
-
+            {
+                throw new ApiException(HttpStatusCode.NotFound, $"The course with ID {courseId} was not found.");
+            }
             return Ok(_mapper.Map<CourseForCreateDto>(course));
         }
 
@@ -165,8 +168,9 @@ namespace WebApi.Controllers
             int userId = Convert.ToInt32(User.Identity.GetUserId());
             var course = await _unitOfWork.Courses.GetCourse(userId, courseId);
             if (course == null)
-                return NotFound($"The courses with ID {courseId} was not found.");
-
+            {
+                throw new ApiException(HttpStatusCode.NotFound, $"The courses with ID {courseId} was not found.");
+            }
             return Ok(course);
         }
 

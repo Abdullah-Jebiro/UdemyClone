@@ -5,7 +5,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Models.DbEntities;
 using Models.Dtos;
+using Models.Exceptions;
 using Services.Repos;
+using System.Net;
 using System.Security.Claims;
 
 namespace WebApi.Controllers
@@ -70,7 +72,7 @@ namespace WebApi.Controllers
             var course = await _unitOfWork.Courses.GetByIdAsync(courseId);
             if (course == null)
             {
-                return NotFound("Course not found.");
+                throw new ApiException(HttpStatusCode.NotFound);
             }
 
             // Check if the user already has the course in their cart
@@ -81,7 +83,7 @@ namespace WebApi.Controllers
             if (existingCartItem)
             {
                 // return response (409)
-                return Conflict("Course already exists in cart.");
+                throw new ApiException(HttpStatusCode.Conflict, "Course already exists in cart.");
             }
 
             var cartItem = new CartItem() { CourseId = courseId, UserId = userId, };
@@ -102,7 +104,8 @@ namespace WebApi.Controllers
             );
             if (cartItem == null)
             {
-                return NotFound();
+                throw new ApiException(HttpStatusCode.NotFound);
+
             }
             await _unitOfWork.Carts.DeleteAsync(cartItem);
             return NoContent();

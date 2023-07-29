@@ -132,6 +132,12 @@
             </summary>
             <returns>A list of courses associated with the current user</returns>
         </member>
+        <member name="M:WebApi.Controllers.CoursesController.GetInstructorCourses(System.Int32,System.Int32)">
+            <summary>
+            Gets the courses associated with the current instructor
+            </summary>
+            <returns>A list of courses associated with the current instructor</returns>
+        </member>
         <member name="M:WebApi.Controllers.CoursesController.GetCourseForUpdate(System.Int32)">
             <summary>
             Gets a course associated with the current user for updating
