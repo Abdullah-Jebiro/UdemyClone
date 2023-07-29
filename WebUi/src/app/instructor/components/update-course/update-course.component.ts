@@ -33,6 +33,21 @@ export class UpdateCourseComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute
   ) { }
 
+
+  updateCourseForm: FormGroup = this.fb.group(
+    {
+      name: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      description: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      price: new FormControl(null, [Validators.required, Validators.pattern(/^[0-9]*$/)]),
+      about: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      thumbnailUrl: new FormControl(null, [Validators.required, Validators.pattern(/\.(jpg|jpeg|png|gif|webp)$/i)]),
+      levelId: new FormControl(null, [Validators.required]),
+      categoryId: new FormControl(null, [Validators.required]),
+      languageId: new FormControl(null, [Validators.required]),
+    },
+  );
+
+
   ngOnInit(): void {
 
     this.adminService.Levels.subscribe({
@@ -76,19 +91,7 @@ export class UpdateCourseComponent implements OnInit, OnDestroy {
   }
 
 
-  updateCourseForm: FormGroup = this.fb.group(
-    {
-      name: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      description: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      price: new FormControl(null, [Validators.required, Validators.pattern(/^[0-9]*$/)]),
-      about: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      thumbnailUrl: new FormControl(null, [Validators.required, Validators.pattern(/\.(jpg|jpeg|png|gif|webp)$/i)]),
-      levelId: new FormControl(null, [Validators.required]),
-      categoryId: new FormControl(null, [Validators.required]),
-      languageId: new FormControl(null, [Validators.required]),
-    },
-  );
-
+ 
 
   onSubmit() {
     this.isLoading = true;

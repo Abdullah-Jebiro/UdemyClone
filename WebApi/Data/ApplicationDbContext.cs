@@ -34,7 +34,7 @@ namespace Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-
+            
             base.OnModelCreating(builder);
 
             builder.Entity<Category>().HasQueryFilter(c => !c.IsDeleted);

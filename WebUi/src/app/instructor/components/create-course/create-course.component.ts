@@ -58,14 +58,14 @@ export class CreateCourseComponent implements OnInit {
 
   createCourseForm: FormGroup = this.fb.group(
     {
-      name: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      description: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      price: new FormControl(null, [Validators.required, Validators.pattern(/^[0-9]*$/)]),
-      about: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      thumbnailUrl: new FormControl(null, [Validators.required, Validators.pattern(/\.(jpg|jpeg|png|gif|webp)$/i)]),
-      levelId: new FormControl(-1, [Validators.required, Validators.min(1)]),
-      categoryId: new FormControl(-1, [Validators.required, Validators.min(1)]),
-      languageId: new FormControl(-1, [Validators.required, Validators.min(1)]),
+      name: [null, [Validators.required, Validators.minLength(3)]],
+      description: [null, [Validators.required, Validators.minLength(3)]],
+      price: [null, [Validators.required, Validators.pattern(/^[0-9]*$/)]],
+      about: [null, [Validators.required, Validators.minLength(3)]],
+      thumbnailUrl: [null, [Validators.required, Validators.pattern(/\.(jpg|jpeg|png|gif|webp)$/i)]],
+      levelId: [-1, [Validators.required, Validators.min(1)]],
+      categoryId: [-1, [Validators.required, Validators.min(1)]],
+      languageId: [-1, [Validators.required, Validators.min(1)]],
     },
   );
 

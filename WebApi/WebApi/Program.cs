@@ -26,14 +26,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Configure logging using Serilog
 builder.Host.UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration));
-builder.Logging.ClearProviders();
-builder.Logging.AddConsole();
+
 
 // Add services to the container.
 builder.Services.AddControllers();
 
 // Configure Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen(options =>
 {
     // Include XML comments for Swagger/OpenAPI documentation
@@ -61,7 +61,9 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.Configure<JWTSettings>(builder.Configuration.GetSection("JWTSettings"));
 builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
 builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("StripeSettings"));
+// AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+// Services
 #if DEBUG
 builder.Services.AddTransient<IEmailService, MockEmailService>();
 #else
@@ -69,8 +71,8 @@ builder.Services.AddTransient<IEmailService, EmailService>();
 #endif
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IFilesService, FilesService>();
-builder.Services.AddScoped<IPaymentService, PaymentService>();
-
+builder.Services.AddScoped<IPaymentService, PaymentService>(); //TTODO
+// UnitOfWork
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 // Configure Identity
@@ -106,7 +108,7 @@ builder.Services.AddAuthentication(options =>
 });
 
 
-
+// Add Policy
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("AdminOnly", policy =>
