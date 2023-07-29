@@ -11,7 +11,6 @@ namespace Models.DbEntities
     {
         public int VideoId { get; set; }
         public string VideoTitle{ get; set; } = null!;
-  
         public string VideoUrl { get; set; } =  null!;
         public int CourseId { get; set; }
         public Course Course { get; set; } = null!;

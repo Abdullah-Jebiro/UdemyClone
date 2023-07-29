@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder,FormGroup } from '@angular/forms';
 import { HttpResponse } from '@angular/common/http';
 import { SubSink } from 'subsink';
 
@@ -38,12 +38,12 @@ export class AllCoursesComponent implements OnInit, OnDestroy {
 
   // Form for filtering courses
   filterForm: FormGroup = this.fb.group({
-    levelId: new FormControl(-1),
-    categoryId: new FormControl(-1),
-    languageId: new FormControl(-1),
-    instructorId: new FormControl(-1),
-    minPrice: new FormControl(null),
-    maxPrice: new FormControl(null),
+    levelId: [-1],
+    categoryId: [-1],
+    languageId: [-1],
+    instructorId: [-1],
+    minPrice: [null],
+    maxPrice: [null],
   });
 
   constructor(
