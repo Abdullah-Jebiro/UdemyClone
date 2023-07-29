@@ -22,12 +22,13 @@ namespace WebApi.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-       
+        private readonly IFilesService _filesService;
 
-        public CoursesController(IUnitOfWork unitOfWork, IMapper mapper)
+        public CoursesController(IUnitOfWork unitOfWork, IMapper mapper , IFilesService filesService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _filesService = filesService;
         }
 
         /// <summary>
@@ -212,6 +213,12 @@ namespace WebApi.Controllers
 
             if (course == null)
                return NotFound($"The course with ID {courseId} was not found.");
+
+            if (course.ThumbnailUrl != dto.ThumbnailUrl)
+            {
+                await _filesService.DeleteAsync(course.ThumbnailUrl);
+                course.ThumbnailUrl = dto.ThumbnailUrl;
+            }
 
             _mapper.Map(dto, course);
             await _unitOfWork.Courses.UpdateAsync(course);

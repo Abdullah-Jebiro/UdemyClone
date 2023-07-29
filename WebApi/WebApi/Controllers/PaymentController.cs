@@ -41,12 +41,9 @@ namespace WebApi.Controllers
                 return BadRequest("The cart is empty.");
             }
 
-
-            await _unitOfWork.UsersCourses.AddRangeAsync(cartItems.Select(c => new UserCourses
-            {
-                CourseId = c.CourseId,
-                UserId = c.UserId
-            }));
+            //TODO
+            #region
+           
 
             // All items in the cart are deleted after payment
             await _unitOfWork.Carts.DeleteRangeAsync(cartItems);
@@ -76,14 +73,23 @@ namespace WebApi.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Payment failed: " + charge.FailureMessage);
             }
+            #endregion
+            #region
+
+            await _unitOfWork.UsersCourses.AddRangeAsync(cartItems.Select(c => new UserCourses
+            {
+                CourseId = c.CourseId,
+                UserId = c.UserId,
+                
+            })); ;
 
             foreach (var item in cartItems)
             {
-                var accounts = await _unitOfWork.InstructorsAccounts.FindAsync(i => i.UserId == item.UserId);
+                var accounts = await _unitOfWork.InstructorsAccounts.FindAsync(i => i.UserId == item.Course.UserId);
                 if (accounts == null)
                 {
                     var instructorAccount = new InstructorAccount() {
-                        UserId = item.UserId,
+                        UserId = item.Course.UserId,
                         Account = (item.Course.Price * 0.9)
                     };        
                     await _unitOfWork.InstructorsAccounts.AddAsync(instructorAccount);
@@ -94,6 +100,8 @@ namespace WebApi.Controllers
                     await _unitOfWork.InstructorsAccounts.UpdateAsync(accounts);
                 }
             }
+            #endregion
+
             return Ok();
         }
     }
