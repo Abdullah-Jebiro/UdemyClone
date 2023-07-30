@@ -191,7 +191,7 @@ namespace WebApi.Controllers
             // Add the course to the repository and return a CreatedAtAction response with the course information
             course = await _unitOfWork.Courses.AddAsync(course);
 
-            return CreatedAtAction(
+            return CreatedAtAction( 
                 nameof(GetCourse),
                 new { courseId = course.CourseId },
                 _mapper.Map<CourseDto>(course)
@@ -207,7 +207,7 @@ namespace WebApi.Controllers
         /// <param name="courseId">The ID of the course to update.</param>
         /// <returns>Returns an IActionResult indicating the success or failure of the operation.</returns>
         [HttpPut("{courseId}")]
-        public async Task<ActionResult> Update(CourseForUpdateDto dto, int courseId)
+        public async Task<ActionResult> Update([FromRoute]CourseForUpdateDto dto, int courseId)
         {
             int userId = Convert.ToInt32(User.Identity.GetUserId());
             var course = await _unitOfWork.Courses.FindAsync(
@@ -224,7 +224,7 @@ namespace WebApi.Controllers
             }
 
             _mapper.Map(dto, course);
-            await _unitOfWork.Courses.UpdateAsync(course);
+            await _unitOfWork.Courses.UpdateAsync(course);   
             return Ok();
         }
 
