@@ -71,15 +71,12 @@ export class FileUploadService {
     if (error.error instanceof ErrorEvent) {
       // Client-side error
       errorMessage = `Failed to upload file: ${error.error.message}`;
-    } else {
-      // Server-side error
-      errorMessage = `Error Code : ${error.status == undefined ? 500 : error.status
-        }
-        Message : ${error?.error?.Message == undefined
-          ? error?.message
-          : error?.error?.Message
-        }`;
+    } 
+    else {
+      errorMessage = `Error Code: ${error.status == undefined ? 500 : error.status}
+      Message : ${error?.error?.Message == undefined ? error?.message : error?.error?.Message}`;
     }
+    console.log(errorMessage); 
     return throwError(() => errorMessage);
   }
 }

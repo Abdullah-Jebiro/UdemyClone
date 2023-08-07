@@ -55,7 +55,8 @@ namespace WebApi.Controllers
 
             if (imageStream==null)
             {
-                return NotFound();
+                throw new ApiException(HttpStatusCode.NotFound, "image not found ");
+
             }
 
             // Return the image as a JPEG file
@@ -93,7 +94,7 @@ namespace WebApi.Controllers
             var video = await _unitOfWork.Videos.FindAsync(v => v.VideoUrl == videoName);
             if (video == null)
             {
-                return NotFound();
+                throw new ApiException(HttpStatusCode.NotFound, "Video not found ");
             }
 
             //TODO
@@ -116,7 +117,7 @@ namespace WebApi.Controllers
             var videoFile = await _filesService.GetFile(videoName);
             if (videoFile == null)
             {
-                return NotFound();
+                throw new ApiException(HttpStatusCode.NotFound, "Video not found ");
             }
 
             // Return the video file as a FileStreamResult with the appropriate MIME type and file name

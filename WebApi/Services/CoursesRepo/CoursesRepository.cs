@@ -55,7 +55,11 @@ namespace Services.CoursesRepo
                 .Include(c => c.Level)
                 .Include(c => c.User)
                 .SingleOrDefaultAsync(c => c.CourseId == courseId && !c.IsDelete);
-         
+
+            if (course == null)
+            {
+                return null;
+            }
 
             var result = new CoursesWithDetailDto
             {
@@ -140,6 +144,7 @@ namespace Services.CoursesRepo
                 coursesQuery = coursesQuery.Where(c => c.Name.ToLower().Contains(nameLower));
             }
 
+            //TODO
             var courses = coursesQuery.Select(course => new CoursesWithStatusDto
             {
                 CategoryId = course.CategoryId,

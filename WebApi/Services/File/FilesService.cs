@@ -133,7 +133,7 @@ namespace Services.File
                 }
             }
             else if (Directory.Exists(fullPath))
-            {
+            { 
                 try
                 {
                     await Task.Run(() =>Directory.Delete(fullPath,true));

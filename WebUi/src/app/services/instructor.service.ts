@@ -109,12 +109,12 @@ export class InstructorService {
     let errorMessage: string = '';
     if (error.error instanceof ErrorEvent) {
       errorMessage = ` client - side error` + error?.error?.message;
-    } else {
-      errorMessage = `Error Code: ${error.status} Message:${error?.error?.Message == undefined
-        ? error?.message
-        : error?.error?.Message
-        } `;
+    } 
+    else {
+      errorMessage = `Error Code: ${error.status == undefined ? 500 : error.status}
+      Message : ${error?.error?.Message == undefined ? error?.message : error?.error?.Message}`;
     }
+    console.log(errorMessage); 
     return throwError(() => errorMessage);
   }
 }

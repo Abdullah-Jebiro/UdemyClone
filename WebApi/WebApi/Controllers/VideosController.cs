@@ -4,8 +4,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models.DbEntities;
 using Models.Dtos;
+using Models.Exceptions;
 using Services.File;
 using Services.Repos;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
+using System.Net;
 
 namespace WebApi.Controllers
 {
@@ -48,14 +51,14 @@ namespace WebApi.Controllers
 
             if (!isAuthorized)
             {
-                return BadRequest();
+                throw new ApiException(HttpStatusCode.Unauthorized);
             }
 
             var videos = await _unitOfWork.Videos.FindAllAsync(v => v.CourseId == courseId, null, v => v.VideoTitle);
 
             if (videos == null)
             {
-                return NotFound();
+                throw new ApiException(HttpStatusCode.NotFound);
             }
 
             var videosDto = _mapper.Map<IReadOnlyList<VideoDto>>(videos);
@@ -77,7 +80,7 @@ namespace WebApi.Controllers
 
             if (videos.Count() == 0)
             {
-                return NotFound();
+                throw new ApiException(HttpStatusCode.NotFound);
             }
 
             var videoInfoDtos = _mapper.Map<IReadOnlyList<VideoInfoDto>>(videos);
@@ -98,12 +101,12 @@ namespace WebApi.Controllers
                 || await _unitOfWork.Courses.ExistsAsync(c => c.CourseId == courseId && c.UserId == userId);
             if (!ISAuth)
             {
-                return BadRequest();        
+                throw new ApiException(HttpStatusCode.Unauthorized);
             }
 
             var video = await _unitOfWork.Videos.FindAsync(videos => videos.VideoId == videoId);
             if (video == null)
-                return BadRequest();
+                throw new ApiException(HttpStatusCode.NotFound);
 
             return Ok(_mapper.Map<VideoForUpdateDto>(video));
 
@@ -144,11 +147,11 @@ namespace WebApi.Controllers
             int userId = Convert.ToInt32(User.Identity.GetUserId());
             var course = await _unitOfWork.Courses.FindAsync(c => c.UserId == userId && c.CourseId == courseId);
             if (course == null)
-                return BadRequest();
+                throw new ApiException(HttpStatusCode.NotFound);
 
             var video = await _unitOfWork.Videos.FindAsync(v => v.VideoId == videoId);
             if (video == null)
-                return BadRequest();
+                throw new ApiException(HttpStatusCode.NotFound);
 
             video.VideoTitle = dto.VideoTitle;
 

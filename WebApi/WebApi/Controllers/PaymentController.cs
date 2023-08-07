@@ -4,11 +4,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Models.DbEntities;
 using Models.Dtos;
+using Models.Exceptions;
 using Org.BouncyCastle.Crypto.Macs;
 using Services.Payment;
 using Services.Repos;
 using Stripe;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace WebApi.Controllers
@@ -26,7 +28,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Charge( PaymentDto paymentDto)
+        public async Task<IActionResult> Charge(PaymentDto paymentDto)
         {
             // Get the ID of the current logged in user
             int userId = Convert.ToInt32(User.Identity.GetUserId());
@@ -38,7 +40,7 @@ namespace WebApi.Controllers
             // If the basket is empty, an invalid order is returned
             if (cartItems == null)
             {
-                return BadRequest("The cart is empty.");
+                throw new ApiException(HttpStatusCode.BadRequest, "The cart is empty.");
             }
 
             //TODO
@@ -71,7 +73,7 @@ namespace WebApi.Controllers
             // If the batch fails, a 500 Internal Server Error is returned with the error message
             if (charge.Status != "succeeded")
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Payment failed: " + charge.FailureMessage);
+                throw new ApiException(HttpStatusCode.InternalServerError, "Payment failed: " + charge.FailureMessage);
             }
             #endregion
             #region

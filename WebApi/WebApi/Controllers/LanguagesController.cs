@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models.DbEntities;
 using Models.Dtos;
+using Models.Exceptions;
 using Services.Repos;
+using System.Net;
 
 namespace WebApi.Controllers
 {
@@ -36,7 +38,8 @@ namespace WebApi.Controllers
             var languages = await _unitOfWork.Languages.GetAllAsync();
             if (languages == null)
             {
-                return NotFound();
+                throw new ApiException(HttpStatusCode.NotFound, "Language not found ");
+
             }
             var languageDtos = _mapper.Map<IReadOnlyList<LanguageDto>>(languages);
             return Ok(languageDtos);
@@ -54,7 +57,7 @@ namespace WebApi.Controllers
             var language = await _unitOfWork.Languages.GetByIdAsync(languageId);
             if (language == null)
             {
-                return NotFound();
+                throw new ApiException(HttpStatusCode.NotFound, "Language not found ");
             }
             var languageDto = _mapper.Map<LanguageDto>(language);
             return Ok(languageDto);
@@ -72,7 +75,7 @@ namespace WebApi.Controllers
             var existingLanguage = await _unitOfWork.Languages.ExistsAsync(l => l.Name.ToUpper() == toUpper);
             if (existingLanguage)
             {
-                return BadRequest("A language with this name already exists.");
+                throw new ApiException(HttpStatusCode.BadRequest, "A language with this name already exists");
             }
 
             var language = _mapper.Map<Language>(dto);
@@ -95,7 +98,7 @@ namespace WebApi.Controllers
             var language = await _unitOfWork.Languages.GetByIdAsync(languageId);
             if (language == null)
             {
-                return NotFound($"The language with ID {languageId} was not found.");
+                throw new ApiException(HttpStatusCode.NotFound, $"The language with ID {languageId} was not found.");
             }
             _mapper.Map(dto, language);
             await _unitOfWork.Languages.UpdateAsync(language);
@@ -113,7 +116,7 @@ namespace WebApi.Controllers
             var language = await _unitOfWork.Languages.GetByIdAsync(languageId);
             if (language == null)
             {
-                return NotFound();
+                throw new ApiException(HttpStatusCode.NotFound, "Languages not found ");
             }
             await _unitOfWork.Languages.DeleteAsync(language);
             return NoContent();

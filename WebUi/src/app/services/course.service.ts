@@ -103,9 +103,10 @@ export class CourseService {
       // client-side error
       errorMessage = ` client-side error` + error.error.message;
     } else {
-      // server-side error
-      errorMessage = `server-side error ${error.status} Message:${error.message}`;
+      errorMessage = `Error Code: ${error.status == undefined ? 500 : error.status}
+      Message : ${error?.error?.Message == undefined ? error?.message : error?.error?.Message}`;
     }
+    console.log(errorMessage); 
     return throwError(() => errorMessage);
   }
 }

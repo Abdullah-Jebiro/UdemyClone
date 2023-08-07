@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Services.Account
 {
     public interface IAccountService
-    {
+    {       
         /// <summary>
         /// Authenticates a user with their email and password
         /// </summary>
