@@ -122,9 +122,8 @@ namespace WebApi.Controllers
         {
             int userId = Convert.ToInt32(User.Identity.GetUserId());
             var (courses, paginationData) = await _unitOfWork.Courses.GetInstructorCourses(userId, pageNumber,pageSize);
-            if (courses == null)
-            {
-                throw new ApiException(HttpStatusCode.NotFound, "No courses found for instructor.");
+            if (courses == null){
+                throw new ApiException(HttpStatusCode.NotFound, $"No courses found for User with ID {userId}.");
             }
 
             Response.Headers.Add("x-pagination", paginationData.ToString());

@@ -129,13 +129,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(opt =>
 // Configure options for the IISServer
 builder.Services.Configure<IISServerOptions>(options =>
 {
-    options.MaxRequestBodySize = int.MaxValue;
+    options.MaxRequestBodySize = long.MaxValue;
 });
 
 // Configure options for the KestrelServer
 builder.Services.Configure<KestrelServerOptions>(options =>
 {
-    options.Limits.MaxRequestBodySize = int.MaxValue; // if don't set default value is: 30 MB
+    options.Limits.MaxRequestBodySize = long.MaxValue; // if don't set default value is: 30 MB
 });
 
 
