@@ -49,6 +49,8 @@ namespace Services.Account
         /// Gets a list of all users
         /// </summary>
         Task<List<ApplicationUser>> GetUsersAsync();
+
+        Task<BaseResponse<string>> AddRoleForUser(int userId, int roleId);
     }
 
 }

@@ -36,8 +36,8 @@ namespace WebApi.Controllers
             return Ok(new BaseResponse<IReadOnlyList<UserwithoutRoleDto>>(data, $"User List"));
         }
 
-        
-        
+
+
         [HttpGet("AllUserWithRoles")]
         public async Task<IActionResult> GetAllUserWithRoles()
         {
@@ -51,6 +51,21 @@ namespace WebApi.Controllers
             });
 
             return Ok(new BaseResponse<IEnumerable<UserDto>>(result, $"User List"));
+        }
+
+        [HttpPost("addRole")]
+        public async Task<IActionResult> AddRoleForUser(AddRoleRequest request)
+        {
+            var response = await _accountService.AddRoleForUser(request.UserId, request.roleId);
+
+            if (response.IsSuccess)
+            {
+                return Ok(response.Message);
+            }
+            else
+            {
+                return BadRequest(response.Message);
+            }
         }
 
     }

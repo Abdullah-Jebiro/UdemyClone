@@ -16,7 +16,6 @@ namespace WebApi.Controllers
     [Authorize]
     [Route("api/Courses")]
     [ApiController]
-  
     public class CoursesController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -28,6 +27,10 @@ namespace WebApi.Controllers
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _filesService = filesService;
+        }
+
+        public CoursesController()
+        {
         }
 
         /// <summary>

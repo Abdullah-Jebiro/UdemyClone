@@ -17,4 +17,8 @@
     <ProjectReference Include="..\Models\Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repo\" />
+  </ItemGroup>
+
 </Project>

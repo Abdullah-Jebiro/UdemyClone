@@ -14,11 +14,13 @@ using Models.Identity;
 using Models.ResponseModels;
 using Models.Settings;
 using Services.File;
+using Services.Repos;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Security.Claims;
 using System.Text;
 
@@ -276,7 +278,7 @@ namespace Services.Account
             await _emailService.SendAsync(emailRequest);
 
             // Return a message informing the user to check their email to reset their password
-            return new BaseResponse<string>(data:user.Email!, message: "Please check your email to reset your password.");
+            return new BaseResponse<string>(data: user.Email!, message: "Please check your email to reset your password.");
         }
 
 
@@ -362,5 +364,57 @@ namespace Services.Account
             if (user == null) throw new ApiException(HttpStatusCode.BadRequest, $"Error");
             return user;
         }
+
+
+        //TODO
+        public async Task<BaseResponse<string>> AddRoleForUser(int userId, int roleId)
+        {
+            var user = await _userManager.FindByIdAsync(userId.ToString());
+            if (user == null)
+            {
+
+            }
+
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Id == roleId);
+            if (role == null)
+            {
+                return new BaseResponse<string>("Role not found.");
+            }
+
+            var userRoles = await _userManager.GetRolesAsync(user);
+            if (!userRoles.Contains(role.Name))
+            {
+                await _userManager.AddToRoleAsync(user, role.Name);
+            }
+
+            return new BaseResponse<string>("Role added successfully.");
+        }
+
+        public async Task<BaseResponse<string>> DeleteRoleForUser(int userId, int roleId)
+        {
+            var user = await _userManager.FindByIdAsync(userId.ToString());
+            if (user == null)
+            {
+                return new BaseResponse<string>("User not found.");
+            }
+
+            var role = await _context.Roles.FirstOrDefaultAsync(r => r.Id == roleId);
+            if (role == null)
+            {
+                return new BaseResponse<string>("Role not found.");
+            }
+
+            var userRoles = await _userManager.GetRolesAsync(user);
+            if (userRoles.Contains(role.Name))
+            {
+                await _userManager.RemoveFromRoleAsync(user, role.Name);
+            }
+
+            return new BaseResponse<string>("Role removed successfully.");
+        }
+
+
     }
 }
+
+

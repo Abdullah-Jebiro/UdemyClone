@@ -1,4 +1,5 @@
-﻿using Stripe;
+﻿using Models.Dtos;
+using Stripe;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace Services.Payment
 {
     public interface IPaymentService
     {
+        Task ProcessPayment(PaymentDto paymentDto, int userId);
     }
 }
